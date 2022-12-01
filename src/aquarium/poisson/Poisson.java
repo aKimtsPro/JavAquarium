@@ -4,7 +4,7 @@ import aquarium.Vivant;
 
 public abstract class Poisson extends Vivant {
 
-    public static enum Sexe {
+    public enum Sexe {
         MALE,
         FEMELLE;
 
@@ -54,8 +54,8 @@ public abstract class Poisson extends Vivant {
     }
 
     @Override
-    public void declenchementTour() {
-        super.declenchementTour();
+    public void vieillir() {
+        super.vieillir();
         setPv( getPv() - 1 );
     }
 
@@ -64,7 +64,6 @@ public abstract class Poisson extends Vivant {
             nbrDescendants++;
             return creerEnfant();
         }
-
 
         return null;
     }

@@ -15,8 +15,8 @@ public class Algue extends Vivant {
     }
 
     @Override
-    public void declenchementTour() {
-        super.declenchementTour();
+    public void vieillir() {
+        super.vieillir();
         setPv( getPv() + 1 );
     }
 

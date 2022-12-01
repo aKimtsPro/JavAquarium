@@ -26,6 +26,9 @@ public class Aquarium {
     // endregion
 
     public void ajouter(Vivant vivant){
+        if( vivant == null )
+            throw new IllegalArgumentException();
+
         if( vivant instanceof Algue )
             algues.add( (Algue)vivant );
         else if( vivant instanceof Carnivore )
@@ -49,9 +52,9 @@ public class Aquarium {
 
     private void debuterTour(){
         System.out.println("debut tour");
-        for (int i = 0; i < poissons.size(); i++) { // TODO integrer dans l'autre boucle == diminuer iterations
+        for (int i = 0; i < poissons.size(); i++) {
             Poisson poisson = poissons.get(i);
-            poisson.declenchementTour();
+            poisson.vieillir();
             if (poisson.estMort()) {
                 poissons.remove(poisson);
                 i--;
@@ -62,7 +65,8 @@ public class Aquarium {
 
             if(algue.estMort())
                 algues.remove(algue);
-            algue.declenchementTour();
+
+            algue.vieillir();
             Algue nouvelleAlgue = algue.seReproduire();
 
             if( nouvelleAlgue != null )
@@ -89,7 +93,7 @@ public class Aquarium {
             if( poissonCourant.getPv() <= 5 ){ // le poisson a faim
                 if( isCarn && i < poissons.size() - 1){ // le carnivore a faim et peut manger
                     // un poisson mangé ne peut rien faire <=> on ne peut manger que les poissons qui n'ont encore rien fait
-                    int mangeIndex = random.nextInt(poissons.size() - i - 1) + i + 1;
+                    int mangeIndex = random.nextInt(i+1,poissons.size());
                     Poisson nourriture = poissons.get(mangeIndex);
 
                     ((Carnivore) poissonCourant).manger(nourriture);

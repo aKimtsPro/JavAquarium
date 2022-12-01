@@ -16,8 +16,8 @@ public class Merou extends Carnivore implements HermaAge {
     }
 
     @Override
-    public void declenchementTour() {
-        super.declenchementTour();
+    public void vieillir() {
+        super.vieillir();
         if( getAge() == 10 )
             setSexe( getSexe().getOppose() );
     }

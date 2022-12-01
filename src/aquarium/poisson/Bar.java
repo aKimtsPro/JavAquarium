@@ -1,7 +1,5 @@
 package aquarium.poisson;
 
-import aquarium.Algue;
-
 public class Bar extends Herbivore implements HermaAge{
     public Bar(String nom, Sexe sexe) {
         super(nom, sexe);
@@ -18,8 +16,8 @@ public class Bar extends Herbivore implements HermaAge{
     }
 
     @Override
-    public void declenchementTour() {
-        super.declenchementTour();
+    public void vieillir() {
+        super.vieillir();
         if( getAge() == 10 )
             setSexe( getSexe().getOppose() );
     }

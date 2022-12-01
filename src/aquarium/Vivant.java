@@ -20,7 +20,7 @@ public abstract class Vivant {
     }
 
     public abstract void estMange();
-    public void declenchementTour(){
+    public void vieillir(){
         age++;
     }
     protected void setPv(int pv){
